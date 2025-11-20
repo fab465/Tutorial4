@@ -2,17 +2,60 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WorldStates : MonoBehaviour
+[System.Serializable]
+public class WorldState
 {
-    // Start is called before the first frame update
-    void Start()
+    public string key;
+    public int value;
+}
+
+public class WorldStates 
+{
+    public Dictionary<string, int> states;
+
+    public WorldStates()
     {
-        
+        states = new Dictionary<string, int>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool HasState(string key)
     {
-        
+        return states.ContainsKey(key);
     }
+
+    void AddState(string key, int value)
+    {
+        states.Add(key, value);
+    }
+
+    public void ModifyState(string key, int value)
+    {
+        if(states.ContainsKey(key))
+        {
+            states[key] += value;
+            if (states[key]<=0)
+                RemoveState(key);
+        }
+        else
+        states.Add(key, value);
+    }
+
+    public void RemoveState(string key)
+    {
+        if (states.ContainsKey(key))
+            states.Remove(key);
+    }
+    public void SetState(string key, int value)
+    {
+        if (states.ContainsKey(key))
+            states[key] = value;
+        else
+            states.Add(key, value);
+    }
+
+    public Dictionary<string, int> GetStates()
+    {
+        return states;
+    }
+
 }

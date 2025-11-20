@@ -1,18 +1,66 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class Gaction : MonoBehaviour
+public abstract class Gaction : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public string actionName = "Action";
+    public float cost = 1.0f;
+    public GameObject target;
+    public GameObject targetTag;
+    public float duration = 0;
+    public WorldStates[] preConditions;
+    public WorldStates[] afterEffects;
+    public NavMeshAgent agent;
+
+    public Dictionary<string, int> preconditions;
+    public Dictionary<string, int> effects;
+
+    public WorldStates agenteBeliefs;
+
+    public bool running = false;
+
+    public Gaction()
     {
-        
+        preconditions = new Dictionary<string, int>();
+        effects = new Dictionary<string, int>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Awake()
     {
-        
+        agent = this.gameObject.GetComponent<NavMeshAgent>();
+
+        if (preConditions != null )
+            foreach(WorldState w  in preConditions)
+            {
+                preconditions.Add(w.key, w.value);
+            }
+        if (afterEffects != null)
+            foreach (WorldState w in afterEffects)
+            {
+                effects.Add(w.key, w.value);
+            }
+
     }
+
+    public bool isAchievable()
+    {
+        return true;
+    }
+
+    public bool isAchievableGiven(Dictionary<string, int> conditions)
+    {
+        foreach(KeyValuePair<string, int> p in preconditions)
+        {
+            if (!conditions.ContainsKey(p.Key))
+                return false;
+        }
+        return true;
+    }
+
+    public abstract bool PrePerform();
+    public abstract bool PostPerform();
+
+   
 }

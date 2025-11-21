@@ -8,7 +8,7 @@ public abstract class Gaction : MonoBehaviour
     public string actionName = "Action";
     public float cost = 1.0f;
     public GameObject target;
-    public GameObject targetTag;
+    public string targetTag;
     public float duration = 0;
     public WorldStates[] preConditions;
     public WorldStates[] afterEffects;
@@ -32,12 +32,12 @@ public abstract class Gaction : MonoBehaviour
         agent = this.gameObject.GetComponent<NavMeshAgent>();
 
         if (preConditions != null )
-            foreach(WorldState w  in preConditions)
+            foreach(WorldStates w  in preConditions)
             {
                 preconditions.Add(w.key, w.value);
             }
         if (afterEffects != null)
-            foreach (WorldState w in afterEffects)
+            foreach (WorldStates w in afterEffects)
             {
                 effects.Add(w.key, w.value);
             }

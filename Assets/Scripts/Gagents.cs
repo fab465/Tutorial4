@@ -22,7 +22,7 @@ public class Gagents : MonoBehaviour
         public List<Gaction> actions = new List<Gaction>();
         public Dictionary<SubGoal, int> goals = new Dictionary<SubGoal, int>();
 
-        GPlanner planner;
+        Gplanner planner;
         Queue<Gaction> actionQueue;
         public Gaction currentAction;
         SubGoal currentGoal;

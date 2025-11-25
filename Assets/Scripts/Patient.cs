@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Patient : GAgent
+public class Patient : Gagents
 {
     // Start is called before the first frame update
     new void Start()

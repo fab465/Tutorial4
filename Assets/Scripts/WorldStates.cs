@@ -9,7 +9,7 @@ public class WorldState
     public int value;
 }
 
-public class WorldStates 
+public class WorldStates
 {
     public Dictionary<string, int> states;
 

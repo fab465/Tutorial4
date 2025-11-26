@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,7 +18,11 @@ public abstract class GAction : MonoBehaviour
     public Dictionary<string, int> preconditions;
     public Dictionary<string, int> effects;
 
+    public GInventory inventory;
+
     public WorldStates agentBeliefs;
+
+    public WorldStates beliefs;
 
     public bool running = false;
 
@@ -42,6 +47,10 @@ public abstract class GAction : MonoBehaviour
             {
                 effects.Add(w.key, w.value);
             }
+
+        inventory = this.GetComponent<GAgent>().inventory;
+
+        beliefs=this.GetComponent<GAgent>().beliefs;
             
     }
 

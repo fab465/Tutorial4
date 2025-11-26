@@ -1046,6 +1046,7 @@ GameObject:
   - component: {fileID: 2418050816569830295}
   - component: {fileID: 4005090457622117124}
   - component: {fileID: 2183953014831268752}
+  - component: {fileID: 8107183666465713215}
   m_Layer: 0
   m_Name: Nurse
   m_TagString: Untagged
@@ -1132,6 +1133,31 @@ MonoBehaviour:
     value: 0
   afterEffects:
   - key: treatPatient
+    value: 0
+  agent: {fileID: 0}
+  running: 0
+--- !u!114 &8107183666465713215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2618188073631541129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7702e8b9ecc54b445a5a7144e307f3de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Rest
+  cost: 1
+  target: {fileID: 0}
+  targetTag: Lounge
+  duration: 5
+  preConditions:
+  - key: exhausted
+    value: 0
+  afterEffects:
+  - key: rested
     value: 0
   agent: {fileID: 0}
   running: 0

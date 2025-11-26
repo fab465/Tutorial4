@@ -14,7 +14,7 @@ public class GoToCubicle : GAction
 
     public override bool PostPerform()
     {
-        GWorld.Instance.GetWorld().ModifyState("Treated", 1);
+        GWorld.Instance.GetWorld().ModifyState("TreatingPatient", 1);
         inventory.RemoveItem(target);
         return true;
     }

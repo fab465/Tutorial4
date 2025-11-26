@@ -15,9 +15,10 @@ public class GetTreated : GAction
     public override bool PostPerform()
     {
         GWorld.Instance.GetWorld().ModifyState("isTreated", 1);
-        GWorld.Instance.AddCubicle(target);
+        beliefs.ModifyState("isCured", 1);
+        
         inventory.RemoveItem(target);
-        GWorld.Instance.GetWorld().ModifyState("FreeCubicle", 1);
+        
         return true;
     }
 }

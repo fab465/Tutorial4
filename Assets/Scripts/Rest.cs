@@ -12,6 +12,7 @@ public class Rest : GAction
     public override bool PostPerform()
     {
         beliefs.RemoveState("exhausted");
+        beliefs.ModifyState("rested", 0);
         return true;
     }
 }

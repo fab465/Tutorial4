@@ -7,6 +7,8 @@ public class GetPatient : GAction
     GameObject resource;
     public override bool PrePerform()
     {
+        beliefs.RemoveState("rested");
+
         target = GWorld.Instance.RemovePatient();
         if (target==null) return false;
 

@@ -11,7 +11,7 @@ public class Nurse : GAgent
         SubGoal s1 = new SubGoal("treatPatient", 1, false);
         goals.Add(s1, 3);
 
-        SubGoal s2 = new SubGoal("rested", 1, false);
+        SubGoal s2 = new SubGoal("rested", 1, true);
         goals.Add(s2, 1);
 
         Invoke("GetTired", Random.Range(10, 20));
@@ -19,7 +19,7 @@ public class Nurse : GAgent
 
     void GetTired()
     {
-        beliefs.ModifyState("exhausted", 0);
+        beliefs.ModifyState("exhausted", 1);
         Invoke("GetTired", Random.Range(10, 20));
     }
 
